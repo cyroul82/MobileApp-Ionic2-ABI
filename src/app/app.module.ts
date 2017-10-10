@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import {  HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
@@ -27,6 +28,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__ABI',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
