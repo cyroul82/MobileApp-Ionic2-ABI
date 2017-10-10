@@ -12,7 +12,7 @@
       <div class="list card">
 
         <ion-item class="item-avatar">
-          <ion-icon name="{{collaborateur.Picture}}" item-left (click)="editCollabo()"></ion-icon>
+          <ion-icon name="{{collaborateur.Picture}}" item-left (click)="editCollabo(collaborateur)"></ion-icon>
           <h2>{{collaborateur.Name}} {{collaborateur.Firstname}}</h2>
           <div *ngIf="collaborateur.Statut; then colActif else colInactif">Statut</div>
           <ng-template #colActif><p>Actif</p></ng-template>

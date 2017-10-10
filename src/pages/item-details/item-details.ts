@@ -18,7 +18,7 @@ export class ItemDetailsPage {
 
   }
 
-  editCollabo(){
+  editCollabo(collaborateur: Collaborateur){
     let modal = this.modalCtrl.create(EditCollaborateurPage);
     modal.present();
   }

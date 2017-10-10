@@ -16,9 +16,6 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController) {
 
-    // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    // 'american-football', 'boat', 'bluetooth', 'build'];
-
     this.http.get('http://griffin:10000/Service1.svc/rest/collabos').subscribe(data => {
 
       this.collaborateurs = [];
@@ -44,6 +41,6 @@ export class ListPage {
   addCollaborateur(){
       let modal = this.modalCtrl.create(NewCollaborateurPage);
       modal.present();
-    }
   }
+
 }
