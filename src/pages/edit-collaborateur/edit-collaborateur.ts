@@ -21,6 +21,7 @@ export class EditCollaborateurPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditCollaborateurPage');
   }
+  
   dismiss(){
     this.viewCtrl.dismiss();
   }
