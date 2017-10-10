@@ -16,7 +16,7 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController) {
 
-    this.http.get('http://griffin:10000/Service1.svc/rest/collabos').subscribe(data => {
+    this.http.get('http://192.168.100.50:10000/Service1.svc/rest/collabos').subscribe(data => {
 
       this.collaborateurs = [];
       var d = data as Collaborateur[];
