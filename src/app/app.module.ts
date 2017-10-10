@@ -9,6 +9,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { EditCollaborateurPage } from '../pages/edit-collaborateur/edit-collaborateur';
+import { NewCollaborateurPage } from '../pages/new-collaborateur/new-collaborateur';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +20,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    EditCollaborateurPage
+    EditCollaborateurPage,
+    NewCollaborateurPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    EditCollaborateurPage
+    EditCollaborateurPage,
+    NewCollaborateurPage
   ],
   providers: [
     StatusBar,
