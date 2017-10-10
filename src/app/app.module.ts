@@ -14,6 +14,8 @@ import { NewCollaborateurPage } from '../pages/new-collaborateur/new-collaborate
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DbProvider } from '../providers/db/db';
+import { CollaborateurService } from './collaborateur.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     SQLite,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    CollaborateurService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DbProvider
   ]
 })
 export class AppModule {}

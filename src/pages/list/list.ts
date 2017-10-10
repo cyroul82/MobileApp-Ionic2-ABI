@@ -1,35 +1,27 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
 import { Collaborateur } from '../../model/Collaborateur';
 import { NewCollaborateurPage } from '../new-collaborateur/new-collaborateur';
+import { CollaborateurService } from '../../app/collaborateur.service';
 
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
+  providers: []
 })
-export class ListPage {
+export class ListPage implements OnInit {
   icons: string[];
   collaborateurs: Collaborateur[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public modalCtrl: ModalController, private collaborateurService: CollaborateurService) {
+    this.collaborateurService.collaborateurAdded.subscribe( (c:string) => console.log(c));
+  }
 
-    this.http.get('http://192.168.100.50:10000/Service1.svc/rest/collabos').subscribe(data => {
-
-      this.collaborateurs = [];
-      var d = data as Collaborateur[];
-      d.forEach( c => {
-        this.collaborateurs.push(c);
-      });
-
-    },
-    err => {
-      console.log("Error getting Collabo : ", err);
-    });
-
-
+  ngOnInit(){
+    this.collaborateurs = this.collaborateurService.collaborateurs;
   }
 
   selectedCollaborateur(event, collaborateur: Collaborateur) {
