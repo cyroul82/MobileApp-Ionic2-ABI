@@ -43,7 +43,7 @@ export class ListPage implements OnInit {
 
   getCollaborateurs(){
     this.collaborateurService.getCollaborateurs()
-    .subscribe( (collaborateurs: Collaborateur[]) => {
+      .subscribe( (collaborateurs: Collaborateur[]) => {
       // const data = response.json();
       this.collaborateurs = collaborateurs;
     },

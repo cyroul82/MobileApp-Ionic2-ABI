@@ -3,6 +3,7 @@ import { Collaborateur } from '../model/Collaborateur';
 import { HttpClient } from '@angular/common/http';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CollaborateurService {
@@ -41,12 +42,15 @@ export class CollaborateurService {
     return this.http_.get('https://mobileapp-ionic.firebaseio.com/data.json')
       .map((response: Response) => {
         const data = response.json();
+        console.log("dans get collabo : ", data);
         return data as Collaborateur[];
       });
   }
+
   addCollaborateur(collaborateur: Collaborateur) {
     collaborateur.Id = 1005;
     this.collaborateurs.push(collaborateur);
+    console.log(collaborateur);
   }
 
   updateCollaborateur(collaborateur: Collaborateur){
