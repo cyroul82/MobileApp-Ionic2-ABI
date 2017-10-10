@@ -31,6 +31,8 @@ export class CollaborateurService {
 
   addCollaborateur(collaborateur: Collaborateur) {
     console.log('add new collabo : ', collaborateur);
+    collaborateur.Id = 1005;
+    this.collaborateurs.push(collaborateur);
   }
 
   updateCollaborateur(collaborateur: Collaborateur){

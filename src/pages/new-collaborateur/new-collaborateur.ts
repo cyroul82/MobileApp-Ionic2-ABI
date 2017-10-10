@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { Collaborateur } from '../../model/Collaborateur';
 import { CollaborateurService } from '../../app/collaborateur.service';
@@ -19,8 +20,23 @@ import { CollaborateurService } from '../../app/collaborateur.service';
 })
 export class NewCollaborateurPage {
   collaborateur = {};
+  private collaborateurForm: FormBuilder;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private collaborateurService: CollaborateurService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public viewCtrl: ViewController, private collaborateurService: CollaborateurService,
+              private formBuilder: FormBuilder) {
+
+      this.collaborateurForm = this.formBuilder.group({
+        Name: ['', Validators.required],
+        Firstname: ['', Validators.required],
+        Fonction: [''],
+        Address: [''],
+        ZipCode: [''],
+        Town: [''],
+        Email: [''],
+        Tel: [''],
+        Picture: [''],
+      });
   }
 
   ionViewDidLoad() {
@@ -32,8 +48,10 @@ export class NewCollaborateurPage {
   }
 
   savingCollaborateur() {
-    this.collaborateurService.logStatusChange("collaborateur saved");
+    let collaborateur = this.collaborateurForm.value as Collaborateur;
+    this.collaborateurService.addCollaborateur(collaborateur);
     this.collaborateurService.collaborateurAdded.emit("new collabo");
+    this.dismiss();
   }
 
 }

@@ -20,51 +20,51 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="savingCollaborateur()">
+  <form [formGroup]="collaborateurForm" (ngSubmit)="savingCollaborateur()">
     <ion-list>
       <ion-item>
       <ion-label color="primary" floating>Nom</ion-label>
-      <ion-input type="text" value="" name="Name" [(ngModel)]="collaborateur.Name"></ion-input>
+      <ion-input type="text" formControlName="Name"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Prénom</ion-label>
-      <ion-input type="text" name="Firstname" [(ngModel)]="collaborateur.Firstname"></ion-input>
+      <ion-input type="text" formControlName="Firstname"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Fonction</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="Fonction"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Adresse</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="Address"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Code Postal</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="ZipCode"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Ville</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="Town"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Email</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="Email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Téléphone</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="Tel"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" floating>Picture</ion-label>
-      <ion-select [(ngModel)]="collaborateur.Picture" name="Picture">
+      <ion-select formControlName="Picture">
         <ion-option value="flask" selected="true">Flask</ion-option>
         <ion-option value="wifi">Wifi</ion-option>
         <ion-option value="beer">Beer</ion-option>
@@ -80,7 +80,7 @@
 
     </ion-list>
     <div padding>
-        <button ion-button color="primary" block type="submit">Ajouter</button>
+        <button ion-button color="primary" block type="submit" [disabled]="!collaborateurForm.valid">Ajouter</button>
     </div>
   </form>
 
