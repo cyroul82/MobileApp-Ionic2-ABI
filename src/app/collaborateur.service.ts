@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Collaborateur } from '../model/Collaborateur';
 import { HttpClient } from '@angular/common/http';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class CollaborateurService {
@@ -10,7 +12,7 @@ export class CollaborateurService {
   collaborateurUpdated = new EventEmitter<Collaborateur>();
   collaborateurAdded = new EventEmitter<string>();
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private http_: Http){
     this.collaborateurs = [];
     this.http.get('http://192.168.100.50:10000/Service1.svc/rest/collabos').subscribe(data => {
 
@@ -28,9 +30,21 @@ export class CollaborateurService {
   logStatusChange(status: string){
     console.log('Collaborateur changed : ', status);
   }
-
+  saveCollaborateurs(collaborateurs: any[]){
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    // return this.http_.post('https://mobileapp-ionic.firebaseio.com/data.json', collaborateurs, {headers: headers} );
+    return this.http_.put('https://mobileapp-ionic.firebaseio.com/data.json', collaborateurs, {headers: headers});
+  }
+  getCollaborateurs(){
+    return this.http_.get('https://mobileapp-ionic.firebaseio.com/data.json')
+      .map((response: Response) => {
+        const data = response.json();
+        return data as Collaborateur[];
+      });
+  }
   addCollaborateur(collaborateur: Collaborateur) {
-    console.log('add new collabo : ', collaborateur);
     collaborateur.Id = 1005;
     this.collaborateurs.push(collaborateur);
   }

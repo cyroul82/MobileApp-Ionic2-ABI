@@ -35,4 +35,19 @@ export class ListPage implements OnInit {
       modal.present();
   }
 
+  saveCollaborateurs(){
+    this.collaborateurService.saveCollaborateurs(this.collaborateurs)
+      .subscribe( response => console.log(response),
+      error => console.log(error));
+  }
+
+  getCollaborateurs(){
+    this.collaborateurService.getCollaborateurs()
+    .subscribe( (collaborateurs: Collaborateur[]) => {
+      // const data = response.json();
+      this.collaborateurs = collaborateurs;
+    },
+    error => console.log(error));
+  }
+
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import {  HttpClientModule } from '@angular/common/http';
+import {  HttpModule } from '@angular/http';
 import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
@@ -29,6 +30,7 @@ import { CollaborateurService } from './collaborateur.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: '__ABI',
