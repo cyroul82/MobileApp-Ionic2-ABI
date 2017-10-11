@@ -20,7 +20,7 @@ import { CollaborateurService } from '../../app/collaborateur.service';
 })
 export class NewCollaborateurPage {
   collaborateur = {};
-  private collaborateurForm: FormBuilder;
+  private collaborateurForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private collaborateurService: CollaborateurService,

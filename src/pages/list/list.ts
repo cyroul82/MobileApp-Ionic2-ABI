@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
@@ -11,7 +11,7 @@ import { CollaborateurService } from '../../app/collaborateur.service';
   templateUrl: 'list.html',
   providers: []
 })
-export class ListPage implements OnInit {
+export class ListPage {
   icons: string[];
   collaborateurs: Collaborateur[];
 
@@ -20,8 +20,11 @@ export class ListPage implements OnInit {
     this.collaborateurService.collaborateurAdded.subscribe( (c:string) => console.log(c));
   }
 
-  ngOnInit(){
-    this.collaborateurs = this.collaborateurService.collaborateurs;
+  ionViewWillEnter(){
+    this.collaborateurService.getCollaborateurs()
+    .then( (data) => {
+      this.collaborateurs = data;
+    });
   }
 
   selectedCollaborateur(event, collaborateur: Collaborateur) {
@@ -35,19 +38,6 @@ export class ListPage implements OnInit {
       modal.present();
   }
 
-  saveCollaborateurs(){
-    this.collaborateurService.saveCollaborateurs(this.collaborateurs)
-      .subscribe( response => console.log(response),
-      error => console.log(error));
-  }
 
-  getCollaborateurs(){
-    this.collaborateurService.getCollaborateurs()
-      .subscribe( (collaborateurs: Collaborateur[]) => {
-      // const data = response.json();
-      this.collaborateurs = collaborateurs;
-    },
-    error => console.log(error));
-  }
 
 }

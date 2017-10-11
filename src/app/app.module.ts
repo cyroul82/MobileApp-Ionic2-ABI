@@ -6,17 +6,20 @@ import {  HttpModule } from '@angular/http';
 import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { Contacts } from '@ionic-native/contacts';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { EditCollaborateurPage } from '../pages/edit-collaborateur/edit-collaborateur';
 import { NewCollaborateurPage } from '../pages/new-collaborateur/new-collaborateur';
+import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DbProvider } from '../providers/db/db';
 import { CollaborateurService } from './collaborateur.service';
+import { RemoteCollaborateurService } from './remoteCollaborateur.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { CollaborateurService } from './collaborateur.service';
     ItemDetailsPage,
     ListPage,
     EditCollaborateurPage,
-    NewCollaborateurPage
+    NewCollaborateurPage,
+    RemoteCollaborateurPage
   ],
   imports: [
     BrowserModule,
@@ -44,13 +48,16 @@ import { CollaborateurService } from './collaborateur.service';
     ItemDetailsPage,
     ListPage,
     EditCollaborateurPage,
-    NewCollaborateurPage
+    NewCollaborateurPage,
+    RemoteCollaborateurPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     SQLite,
     CollaborateurService,
+    RemoteCollaborateurService,
+    Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider
   ]

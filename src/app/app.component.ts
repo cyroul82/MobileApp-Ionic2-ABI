@@ -5,6 +5,8 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
+import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +34,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Accueil', component: HelloIonicPage },
-      { title: 'Collaborateurs', component: ListPage }
+      { title: 'Collaborateurs', component: ListPage },
+      { title: 'Collaborateurs distants', component: RemoteCollaborateurPage }
     ];
   }
 
@@ -42,21 +45,23 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.sqlite.create({
-        name: 'abi.db',
-        location: 'default'
-      }).then((db: SQLiteObject) => {
-        db.executeSql('create table collaborateur(id integer primary key, name text, firstname text, fonction text, statut int, address text, zipcode text, town text, tel text, email text, picture text)', {})
-          .then(() => {
-            console.log("Table Created");
-          })
-          .catch( err => {
-            console.log("Error creating table : ", err)
-          });
-      })
-      .catch (err => {
-        console.log("Error sqlite create : ", err);
-      })
+
+      // this.sqlite.create({
+      //   name: 'abi.db',
+      //   location: 'default'
+      // }).then((db: SQLiteObject) => {
+      //   db.executeSql('create table collaborateur(id integer primary key, name text, firstname text, fonction text, statut int, address text, zipcode text, town text, tel text, email text, picture text)', {})
+      //     .then(() => {
+      //       console.log("Table Created");
+      //     })
+      //     .catch( err => {
+      //       console.log("Error creating table : ", err)
+      //     });
+      // })
+      // .catch (err => {
+      //   console.log("Error sqlite create : ", err);
+      // });
+
     });
   }
 
