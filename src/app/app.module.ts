@@ -8,12 +8,13 @@ import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { Contacts } from '@ionic-native/contacts';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { EditCollaborateurPage } from '../pages/edit-collaborateur/edit-collaborateur';
-import { NewCollaborateurPage } from '../pages/new-collaborateur/new-collaborateur';
+import { NewCollaborateurPage } from   '../pages/new-collaborateur/new-collaborateur';
 import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
 import { FingerprintsPage } from '../pages/fingerprints/fingerprints';
 
@@ -63,6 +64,7 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     RemoteCollaborateurService,
     FingerprintAIO,
     Contacts,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider
   ]
