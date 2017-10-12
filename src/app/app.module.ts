@@ -9,6 +9,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Contacts } from '@ionic-native/contacts';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
@@ -65,6 +66,7 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     FingerprintAIO,
     Contacts,
     CallNumber,
+    SMS,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider
   ]

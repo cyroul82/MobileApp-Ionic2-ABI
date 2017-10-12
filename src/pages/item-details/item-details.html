@@ -20,7 +20,7 @@
         </ion-item>
 
         <ion-item class="item-icon-left positive">
-          <ion-icon name="mail" item-left></ion-icon> {{collaborateur.Address}}<br>
+          <ion-icon name="mail" item-left (click)="sendSMS(collaborateur)"></ion-icon> {{collaborateur.Address}}<br>
           {{collaborateur.ZipCode}} <strong>{{collaborateur.Town}}</strong>
         </ion-item>
 

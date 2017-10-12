@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 import { Contacts, Contact, ContactField, ContactFieldType, ContactName, ContactFindOptions } from '@ionic-native/contacts';
 
 import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
@@ -7,6 +8,7 @@ import { ModalController, NavController, NavParams, AlertController } from 'ioni
 import { Collaborateur } from '../../model/Collaborateur';
 import { EditCollaborateurPage } from '../edit-collaborateur/edit-collaborateur';
 import { CollaborateurService } from '../../app/collaborateur.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'page-item-details',
@@ -21,7 +23,9 @@ export class ItemDetailsPage {
               private contacts: Contacts, 
               private colService: CollaborateurService,
               private callNumber: CallNumber,
-              public alertCtrl: AlertController) {
+              private sms: SMS,
+              public alertCtrl: AlertController,
+              private http: HttpClient) {
     // If we navigated to this page, we will have an item available as a nav param
     this.collaborateur = navParams.get('collaborateur');
 
@@ -40,13 +44,52 @@ export class ItemDetailsPage {
     this.callNumber.callNumber(tel, true)
     .then(() => console.log('Launched dialer!'))
     .catch((error) => {
-      const alert = this.alertCtrl.create({
-        title: 'Error launching dialer',
-        subTitle: error,
-        buttons: ['Dismiss']
-      });
-      alert.present();
+      this.displayError(error);
     });
+  }
+
+  sendSMS(collaborateur: Collaborateur){
+    const alert = this.alertCtrl.create({
+      title: 'Message',
+      inputs: [
+        {
+          name: 'message',
+          placeholder: 'message'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+            this.getMap()
+              .then(data => {console.log(data)})
+              .catch(error => console.log(error));
+          }
+        },
+        {
+          text: 'Envoyer',
+          handler: data => {
+            if(data.messsage !== ""){
+              let options = {
+                replaceLineBreaks: false, // true to replace \n by a new line, false by default
+                android: {
+                  intent: '' // send SMS with the native android SMS messaging
+                    //intent: '' // send SMS without open any other app
+                    //intent: 'INTENT' // send SMS inside a default SMS app
+                }
+              };
+              this.sms.send(collaborateur.Tel, data.message, options).catch(error => {
+                this.displayError(error);
+              });
+            }else return false;
+            
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   addCollaboToContact(collaborateur: Collaborateur){
@@ -80,5 +123,26 @@ export class ItemDetailsPage {
         console.error('Error Saving contact !', error);
       });
   }
+
+  displayError(error: string){
+    const alert = this.alertCtrl.create({
+      title: 'Erreur',
+      subTitle: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  getMap(){
+    return new Promise(resolve => {
+      this.http.get('https://api.darksky.net/forecast/85c4c283eaeb586607091e57f0b1c1d6/43.7035391,7.2582122?lang=fr&units=auto').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+
 
 }
