@@ -9,6 +9,8 @@ import { Collaborateur } from '../../model/Collaborateur';
 import { EditCollaborateurPage } from '../edit-collaborateur/edit-collaborateur';
 import { CollaborateurService } from '../../app/collaborateur.service';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'page-item-details',
@@ -25,7 +27,7 @@ export class ItemDetailsPage {
               private callNumber: CallNumber,
               private sms: SMS,
               public alertCtrl: AlertController,
-              private http: HttpClient) {
+              private http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.collaborateur = navParams.get('collaborateur');
 
@@ -63,9 +65,7 @@ export class ItemDetailsPage {
           role: 'cancel',
           handler: data => {
             console.log('Cancel clicked');
-            this.getMap()
-              .then(data => {console.log(data)})
-              .catch(error => console.log(error));
+            
           }
         },
         {
@@ -90,6 +90,15 @@ export class ItemDetailsPage {
       ]
     });
     alert.present();
+  }
+
+  getInfo() {
+    this.getMap().subscribe( data => {
+      this.displayError(JSON.stringify(data));
+    }, error => {
+      this.displayError(error);
+    })
+    
   }
 
   addCollaboToContact(collaborateur: Collaborateur){
@@ -134,12 +143,9 @@ export class ItemDetailsPage {
   }
 
   getMap(){
-    return new Promise(resolve => {
-      this.http.get('https://api.darksky.net/forecast/85c4c283eaeb586607091e57f0b1c1d6/43.7035391,7.2582122?lang=fr&units=auto').subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
+   return this.http.get('https://api.darksky.net/forecast/xxxxxxxxxxxxxxxxxxxxxxxxxx/43.7035391,7.2582122?lang=fr&units=auto')
+    .catch((err) => {
+       return Observable.throw(err);
     });
   }
 

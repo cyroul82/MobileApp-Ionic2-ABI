@@ -25,7 +25,7 @@
         </ion-item>
 
         <ion-item class="item-icon-left positive">
-          <ion-icon item-left name="at"></ion-icon> {{collaborateur.Email}}
+          <ion-icon item-left name="at" (click)="getInfo()"></ion-icon> {{collaborateur.Email}}
         </ion-item>
 
         <ion-item class="item-icon-left positive" (click)="callContact(collaborateur.Tel)">
