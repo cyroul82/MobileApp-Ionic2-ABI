@@ -6,6 +6,7 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
+import { FingerprintsPage } from '../pages/fingerprints/fingerprints';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,7 +36,8 @@ export class MyApp {
     this.pages = [
       { title: 'Accueil', component: HelloIonicPage },
       { title: 'Collaborateurs', component: ListPage },
-      { title: 'Collaborateurs distants', component: RemoteCollaborateurPage }
+      { title: 'Collaborateurs distants', component: RemoteCollaborateurPage },
+      { title: 'Fingerprints', component: FingerprintsPage }
     ];
   }
 

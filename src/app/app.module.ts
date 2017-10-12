@@ -7,6 +7,7 @@ import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { Contacts } from '@ionic-native/contacts';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
@@ -14,6 +15,7 @@ import { ListPage } from '../pages/list/list';
 import { EditCollaborateurPage } from '../pages/edit-collaborateur/edit-collaborateur';
 import { NewCollaborateurPage } from '../pages/new-collaborateur/new-collaborateur';
 import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
+import { FingerprintsPage } from '../pages/fingerprints/fingerprints';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +31,8 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     ListPage,
     EditCollaborateurPage,
     NewCollaborateurPage,
-    RemoteCollaborateurPage
+    RemoteCollaborateurPage,
+    FingerprintsPage
   ],
   imports: [
     BrowserModule,
@@ -49,14 +52,16 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     ListPage,
     EditCollaborateurPage,
     NewCollaborateurPage,
-    RemoteCollaborateurPage
-  ],
+    RemoteCollaborateurPage,
+    FingerprintsPage
+    ],
   providers: [
     StatusBar,
     SplashScreen,
     SQLite,
     CollaborateurService,
     RemoteCollaborateurService,
+    FingerprintAIO,
     Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider
