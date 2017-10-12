@@ -37,29 +37,29 @@ export class ItemDetailsPage {
     //                                   'middleName', 'name', 'nickname', 'note', 'organizations',
     //                                   'phoneNumbers', 'photos', 'postalCode', 'region', 'streetAddress', 'title', 'urls'];
 
-    let fields:ContactFieldType[] = ['name'];
+    // let fields:ContactFieldType[] = ['name'];
     
-    const options = new ContactFindOptions();
-    options.filter = collaborateur.Name, collaborateur.Firstname;
-    options.multiple = true;
-    options.hasPhoneNumber = true;
+    // const options = new ContactFindOptions();
+    // options.filter = collaborateur.Name, collaborateur.Firstname;
+    // options.multiple = true;
+    // options.hasPhoneNumber = true;
     
-    this.contacts.find(fields, options).then( contacts => {
-      contacts.forEach(c => {
-        console.log(c);
-      });
-    });
-    // let contact: Contact = this.contacts.create();
-    // contact.name = new ContactName(null, collaborateur.Name, collaborateur.Firstname);
-    // contact.phoneNumbers = [new ContactField('mobile', collaborateur.Tel)];
-    // contact.emails = [new ContactField('email', collaborateur.Email)];
-    // contact.save()
-    //   .then( () => {
-    //     console.log('Contact saved !', contact);
-    //   },
-    //   (error: any) => {
-    //     console.error('Error Saving contact !', error);
+    // this.contacts.find(fields, options).then( contacts => {
+    //   contacts.forEach(c => {
+    //     console.log(c);
     //   });
+    // });
+    let contact: Contact = this.contacts.create();
+    contact.name = new ContactName(null, collaborateur.Name, collaborateur.Firstname);
+    contact.phoneNumbers = [new ContactField('mobile', collaborateur.Tel)];
+    contact.emails = [new ContactField('email', collaborateur.Email)];
+    contact.save()
+      .then( () => {
+        console.log('Contact saved !', contact);
+      },
+      (error: any) => {
+        console.error('Error Saving contact !', error);
+      });
   }
 
 }
