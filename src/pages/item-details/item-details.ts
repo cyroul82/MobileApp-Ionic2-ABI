@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { Contacts, Contact, ContactField, ContactFieldType, ContactName, ContactFindOptions } from '@ionic-native/contacts';
 
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 
@@ -26,7 +26,24 @@ export class ItemDetailsPage {
   }
 
   addCollaboToContact(collaborateur: Collaborateur){
-    console.log(collaborateur);
+    // let fields:ContactFieldType[] = ['addresses', 'birthday', 'categories', 'country', 'department',
+    //                                   'displayName', 'emails', 'familyName', 'formatted', 'givenName',
+    //                                   'honorificPrefix', 'honorificSuffix', 'id', 'ims', 'locality',
+    //                                   'middleName', 'name', 'nickname', 'note', 'organizations',
+    //                                   'phoneNumbers', 'photos', 'postalCode', 'region', 'streetAddress', 'title', 'urls'];
+
+    // let fields:ContactFieldType[] = ['displayName'];
+    //
+    // const options = new ContactFindOptions();
+    // options.filter = collaborateur.Name;
+    // options.multiple = true;
+    // options.hasPhoneNumber = true;
+    //
+    // this.contacts.find(fields, options).then( contacts => {
+    //   contacts.forEach(c => {
+    //     console.log(c);
+    //   });
+    // })
     let contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, collaborateur.Name, collaborateur.Firstname);
     contact.phoneNumbers = [new ContactField('mobile', collaborateur.Tel)];
