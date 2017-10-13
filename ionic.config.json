@@ -4,16 +4,13 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
-}
-
-{
-  "name": "proxy-example",
-  "app_id": "",
+  },
   "proxies": [
     {
-      "path": "/api",
-      "proxyUrl": "https://api.darksky.net/forecast/85c4c283eaeb586607091e57f0b1c1d6/43.7035391,7.2582122?lang=fr&units=auto"
-    }
+    "path": "/weather/",
+    "proxyUrl": "https://api.darksky.net/forecast"
+  }
   ]
 }
+
+

@@ -13,6 +13,8 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { mapApiKey, weatherApiKey } from '../../app/apiKey';
+
 
 @Component({
   selector: 'page-item-details',
@@ -96,7 +98,11 @@ export class ItemDetailsPage {
 
   getInfo() {
     this.getMap().subscribe( data => {
-     console.log(JSON.stringify(data));
+      let latitude = data.geometry.location.lat;
+      let longitude = data.geometry.location.lng
+      this.getWeather(latitude, longitude).subscribe(data => {
+        console.log(data);
+      })
     }, (error: HttpErrorResponse) => {
       this.displayError(error.message);
     })
@@ -145,11 +151,26 @@ export class ItemDetailsPage {
   }
 
   getMap(){
-   const h = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
-   return this.http.get('http://localhost:8100/api', {headers: h})
+    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=frejus`)
+    .map(data => {
+      var t = data['results'];
+      return t[0];
+    })
     .catch((err) => {
        return Observable.throw(err);
     });
+  
+  }
+
+  getWeather(latitude: string, longitude: string){
+    const h = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+    return this.http.get(`/weather/${weatherApiKey}/${latitude},${longitude}`, {headers: h})
+     .map(data => {
+       return data['currently'];
+     })
+     .catch((err) => {
+        return Observable.throw(err);
+     });
   }
 
 
