@@ -11,6 +11,8 @@ import { CollaborateurService } from '../../app/collaborateur.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'page-item-details',
@@ -27,7 +29,7 @@ export class ItemDetailsPage {
               private callNumber: CallNumber,
               private sms: SMS,
               public alertCtrl: AlertController,
-              private http: Http) {
+              private http: HttpClient) {
     // If we navigated to this page, we will have an item available as a nav param
     this.collaborateur = navParams.get('collaborateur');
 
@@ -94,9 +96,9 @@ export class ItemDetailsPage {
 
   getInfo() {
     this.getMap().subscribe( data => {
-      this.displayError(JSON.stringify(data));
-    }, error => {
-      this.displayError(error);
+     console.log(JSON.stringify(data));
+    }, (error: HttpErrorResponse) => {
+      this.displayError(error.message);
     })
     
   }
@@ -143,7 +145,8 @@ export class ItemDetailsPage {
   }
 
   getMap(){
-   return this.http.get('https://api.darksky.net/forecast/xxxxxxxxxxxxxxxxxxxxxxxxxx/43.7035391,7.2582122?lang=fr&units=auto')
+   const h = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
+   return this.http.get('http://localhost:8100/api', {headers: h})
     .catch((err) => {
        return Observable.throw(err);
     });
