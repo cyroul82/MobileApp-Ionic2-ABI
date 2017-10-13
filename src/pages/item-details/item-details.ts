@@ -7,6 +7,7 @@ import { ModalController, NavController, NavParams, AlertController } from 'ioni
 
 import { Collaborateur } from '../../model/Collaborateur';
 import { EditCollaborateurPage } from '../edit-collaborateur/edit-collaborateur';
+import { AddressInfoPage } from '../address-info/address-info';
 import { CollaborateurService } from '../../app/collaborateur.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -23,10 +24,10 @@ import { mapApiKey, weatherApiKey } from '../../app/apiKey';
 export class ItemDetailsPage {
   collaborateur: Collaborateur;
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
-              public modalCtrl: ModalController, 
-              private contacts: Contacts, 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              private contacts: Contacts,
               private colService: CollaborateurService,
               private callNumber: CallNumber,
               private sms: SMS,
@@ -69,7 +70,7 @@ export class ItemDetailsPage {
           role: 'cancel',
           handler: data => {
             console.log('Cancel clicked');
-            
+
           }
         },
         {
@@ -88,7 +89,7 @@ export class ItemDetailsPage {
                 this.displayError(error);
               });
             }else return false;
-            
+
           }
         }
       ]
@@ -96,17 +97,19 @@ export class ItemDetailsPage {
     alert.present();
   }
 
-  getInfo() {
-    this.getMap().subscribe( data => {
+  getInfo(collaborateur: Collaborateur) {
+    var address: string = collaborateur.Address + " " + collaborateur.ZipCode + " " + collaborateur.Town;
+    this.getMap(address).subscribe( data => {
       let latitude = data.geometry.location.lat;
       let longitude = data.geometry.location.lng
       this.getWeather(latitude, longitude).subscribe(data => {
         console.log(data);
+        this.navCtrl.push(AddressInfoPage, {weather: data, collaborateur: collaborateur, latitude: latitude, longitude: longitude});
       })
     }, (error: HttpErrorResponse) => {
       this.displayError(error.message);
     })
-    
+
   }
 
   addCollaboToContact(collaborateur: Collaborateur){
@@ -117,12 +120,12 @@ export class ItemDetailsPage {
     //                                   'phoneNumbers', 'photos', 'postalCode', 'region', 'streetAddress', 'title', 'urls'];
 
     // let fields:ContactFieldType[] = ['name'];
-    
+
     // const options = new ContactFindOptions();
     // options.filter = collaborateur.Name, collaborateur.Firstname;
     // options.multiple = true;
     // options.hasPhoneNumber = true;
-    
+
     // this.contacts.find(fields, options).then( contacts => {
     //   contacts.forEach(c => {
     //     console.log(c);
@@ -150,8 +153,8 @@ export class ItemDetailsPage {
     alert.present();
   }
 
-  getMap(){
-    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=frejus`)
+  getMap(address: string){
+    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=${address}`)
     .map(data => {
       var t = data['results'];
       return t[0];
@@ -159,12 +162,12 @@ export class ItemDetailsPage {
     .catch((err) => {
        return Observable.throw(err);
     });
-  
+
   }
 
   getWeather(latitude: string, longitude: string){
     const h = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
-    return this.http.get(`/weather/${weatherApiKey}/${latitude},${longitude}`, {headers: h})
+    return this.http.get(`/weather/${weatherApiKey}/${latitude},${longitude}?units=auto&lang=fr`, {headers: h})
      .map(data => {
        return data['currently'];
      })

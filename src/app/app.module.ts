@@ -18,12 +18,14 @@ import { EditCollaborateurPage } from '../pages/edit-collaborateur/edit-collabor
 import { NewCollaborateurPage } from   '../pages/new-collaborateur/new-collaborateur';
 import { RemoteCollaborateurPage } from '../pages/remote-collaborateur/remote-collaborateur';
 import { FingerprintsPage } from '../pages/fingerprints/fingerprints';
+import { AddressInfoPage } from '../pages/address-info/address-info';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DbProvider } from '../providers/db/db';
 import { CollaborateurService } from './collaborateur.service';
 import { RemoteCollaborateurService } from './remoteCollaborateur.service';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     EditCollaborateurPage,
     NewCollaborateurPage,
     RemoteCollaborateurPage,
-    FingerprintsPage
+    FingerprintsPage,
+    AddressInfoPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     EditCollaborateurPage,
     NewCollaborateurPage,
     RemoteCollaborateurPage,
-    FingerprintsPage
+    FingerprintsPage,
+    AddressInfoPage
     ],
   providers: [
     StatusBar,
@@ -67,6 +71,7 @@ import { RemoteCollaborateurService } from './remoteCollaborateur.service';
     Contacts,
     CallNumber,
     SMS,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider
   ]
