@@ -8,21 +8,35 @@
 
 
 <ion-content padding>
-    <h1>Météo</h1>
-    <ion-grid>
-        <ion-row>
-          <ion-col col-8>
-              Adresse : {{ collaborateur?.Address }} <br>
-              {{ collaborateur?.ZipCode }} {{ collaborateur?.Town}}<br>
-              {{ weather?.currently.summary }} <br>
-              <i class="wi wi-thermometer"></i> : {{ weather?.currently.temperature }}<i class="wi wi-celsius"></i><br>
-          </ion-col>
-          <ion-col>
-              <i class="wi wi-night-sleet" style="font-size: 40px"></i>
-          </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-card>
+        <ion-card-header>
+            <h1>Météo</h1> {{ date }}
+            <p>
+              {{ collaborateur?.Address }}<br>
+              {{ collaborateur?.ZipCode }} {{ collaborateur?.Town }}
+            </p>
+        </ion-card-header>
+          <ion-item>
+            <ion-icon item-start large>
+                <i class="{{icon}} icon-style"></i>
+            </ion-icon>   
+            <h2>{{ weather?.currently.summary }}</h2>
+            <p><i class="wi wi-wind icon-style icon-small"></i> Force du vent: {{ weather?.currently.windSpeed }} km/h</p>
+          </ion-item>
+        
+          <ion-item>
+            <ion-icon item-start large>
+              <i class="wi wi-thermometer icon-style"></i>
+            </ion-icon>
+            <h2> {{ weather?.currently.temperature }}<i class="wi wi-celsius icon-style icon-small"></i></h2>
+            <p><i class="wi wi-humidity icon-style icon-small"></i> Humidité: {{weather?.currently.humidity }} %</p>
+          </ion-item>
+          
+          <ion-card-header>
+              <h1>Localisation</h1>
+          </ion-card-header>
+          <div #map id="map"></div>
+          
+        </ion-card>
 
-
-<div #map id="map"></div>
 </ion-content>

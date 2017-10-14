@@ -105,7 +105,6 @@ export class ItemDetailsPage {
       let latitude = data[0].geometry.location.lat;
       let longitude = data[0].geometry.location.lng
       this.weatherProvider.getWeather(latitude, longitude).subscribe(data => {
-        console.log(data.currently);
         this.navCtrl.push(AddressInfoPage, {weather: data, collaborateur: collaborateur, latitude: latitude, longitude: longitude});
       })
     }, (error) => {

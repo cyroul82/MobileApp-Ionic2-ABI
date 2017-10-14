@@ -25,11 +25,16 @@ export class AddressInfoPage {
   latitude: string;
   weather: any;
   collaborateur: Collaborateur;
+  icon: string;
+  date: string;
 
   @ViewChild('map') mapElement: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps : GoogleMaps) {
     this.weather = navParams.get('weather');
+    let d = new Date(this.weather.currently.time * 1000);
+    this.date = d.toLocaleString();
+    this.icon = this.getWeatherIcon(this.weather.currently.icon);
     this.collaborateur = navParams.get('collaborateur');
     this.latitude = navParams.get('latitude');
     this.longitude = navParams.get('longitude');    
@@ -37,7 +42,6 @@ export class AddressInfoPage {
 
   ionViewDidLoad() {
     this.loadMap();
-    console.log(_);
   }
 
   loadMap() {
@@ -46,49 +50,12 @@ export class AddressInfoPage {
     
        let mapOptions = {
          center: latLng,
-         zoom: 18,
+         zoom: 10,
          mapTypeId: google.maps.MapTypeId.ROADMAP
        }
     
        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
        this.addMarker();
-
-    // let mapOptions: GoogleMapOptions = {
-    //   camera: {
-    //     target: {
-    //       lat: 43.0741904,
-    //       lng: -89.3809802
-    //     },
-    //     zoom: 18,
-    //     tilt: 30
-    //   }
-    // };
-
-    // this.map = this.googleMaps.create(this.mapElement, mapOptions);
-    
-    //     // Wait the MAP_READY before using any methods.
-    //     this.map.one(GoogleMapsEvent.MAP_READY)
-    //       .then(() => {
-    //         console.log('Map is ready!');
-    
-    //         // Now you can use all methods safely.
-    //         this.map.addMarker({
-    //             title: 'Ionic',
-    //             icon: 'blue',
-    //             animation: 'DROP',
-    //             position: {
-    //               lat: 43.0741904,
-    //               lng: -89.3809802
-    //             }
-    //           })
-    //           .then(marker => {
-    //             marker.on(GoogleMapsEvent.MARKER_CLICK)
-    //               .subscribe(() => {
-    //                 alert('clicked');
-    //               });
-    //           });
-    
-    //       });
       }
 
       addMarker(){
@@ -117,4 +84,43 @@ export class AddressInfoPage {
         
        }
 
+       getWeatherIcon(iconName: string){
+         let r: string;
+         switch(iconName){
+           case "clear-day":
+              r = "wi wi-day-sunny";
+              break;
+            case "clear-night":
+              r = "wi wi-night-clear";
+              break;
+            case "partly-cloudy-day":
+              r = "wi wi-day-cloudy";
+              break;
+            case "partly-cloudy-night":
+              r = "wi wi-night-alt-cloudy";
+              break;
+            case "cloudy":
+              r = "wi wi-cloudy";
+              break;
+            case "rain":
+              r = "wi wi-rain";
+              break;
+            case "sleet":
+              r = "wi day-sleet";
+              break;
+             case "snow":
+              r = "wi wi-snow";
+              break;
+            case "wind":
+              r = "wi wi-wind";
+              break;
+            case "fog":
+              r = "wi wi-fog";
+              break;
+            default:
+              r= "wi wi-alien";
+         }
+         return r;
+      }
+       
 }
