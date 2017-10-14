@@ -5,21 +5,22 @@ import { mapApiKey } from './apiKey';
 
 
 @Injectable()
-export class Map {
+export class MapService {
 
     constructor(private http: Http) {
 
     }
 
     getMap(address: string){
-        return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=${address}`)
-        .map(data => {
-          var t = data['results'];
-          return t[0];
-        })
-        .catch((err) => {
-           return Observable.throw(err);
-        });
-    
-      }
+      console.log(address);
+      return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=${address}`)
+      .map((response) => {
+        var t = response.json();
+        return t.results;
+      })
+      .catch((err) => {
+         return Observable.throw(err);
+      });
+  
+    }
 }

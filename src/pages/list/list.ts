@@ -6,6 +6,8 @@ import { Collaborateur } from '../../model/Collaborateur';
 import { NewCollaborateurPage } from '../new-collaborateur/new-collaborateur';
 import { CollaborateurService } from '../../app/collaborateur.service';
 
+import * as _ from 'underscore';
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html',

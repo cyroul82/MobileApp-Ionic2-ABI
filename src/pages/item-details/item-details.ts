@@ -9,6 +9,7 @@ import { Collaborateur } from '../../model/Collaborateur';
 import { EditCollaborateurPage } from '../edit-collaborateur/edit-collaborateur';
 import { AddressInfoPage } from '../address-info/address-info';
 import { CollaborateurService } from '../../app/collaborateur.service';
+import { MapService } from '../../app/map.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
@@ -29,6 +30,7 @@ export class ItemDetailsPage {
               public modalCtrl: ModalController,
               private contacts: Contacts,
               private colService: CollaborateurService,
+              private mapService: MapService,
               private callNumber: CallNumber,
               private sms: SMS,
               public alertCtrl: AlertController,
@@ -99,15 +101,14 @@ export class ItemDetailsPage {
 
   getInfo(collaborateur: Collaborateur) {
     var address: string = collaborateur.Address + " " + collaborateur.ZipCode + " " + collaborateur.Town;
-    this.getMap(address).subscribe( data => {
-      let latitude = data.geometry.location.lat;
-      let longitude = data.geometry.location.lng
+    this.mapService.getMap(address).subscribe( data => {
+      let latitude = data[0].geometry.location.lat;
+      let longitude = data[0].geometry.location.lng
       this.getWeather(latitude, longitude).subscribe(data => {
         console.log(data);
         this.navCtrl.push(AddressInfoPage, {weather: data, collaborateur: collaborateur, latitude: latitude, longitude: longitude});
       })
     }, (error: HttpErrorResponse) => {
-      this.displayError(error.message);
     })
 
   }
@@ -140,7 +141,7 @@ export class ItemDetailsPage {
         console.log('Contact saved !', contact);
       },
       (error: any) => {
-        console.error('Error Saving contact !', error);
+        this.displayError(error);
       });
   }
 
@@ -151,18 +152,6 @@ export class ItemDetailsPage {
       buttons: ['Dismiss']
     });
     alert.present();
-  }
-
-  getMap(address: string){
-    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=${address}`)
-    .map(data => {
-      var t = data['results'];
-      return t[0];
-    })
-    .catch((err) => {
-       return Observable.throw(err);
-    });
-
   }
 
   getWeather(latitude: string, longitude: string){

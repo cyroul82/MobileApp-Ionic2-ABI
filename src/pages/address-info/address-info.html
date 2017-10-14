@@ -8,11 +8,21 @@
 
 
 <ion-content padding>
-<h1>Météo</h1>
-Adresse : {{ collaborateur?.Address }} <br>
-{{ collaborateur?.ZipCode }} {{ collaborateur?.Town}}<br>
-{{ weather?.summary }} <br>
-<i class="wi wi-thermometer"></i> : {{ weather?.temperature }}<i class="wi wi-celsius"></i><br>
-<i class="wi wi-night-sleet" style="font-size: 40px"></i>
+    <h1>Météo</h1>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+              Adresse : {{ collaborateur?.Address }} <br>
+              {{ collaborateur?.ZipCode }} {{ collaborateur?.Town}}<br>
+              {{ weather?.summary }} <br>
+              <i class="wi wi-thermometer"></i> : {{ weather?.temperature }}<i class="wi wi-celsius"></i><br>
+          </ion-col>
+          <ion-col>
+              <i class="wi wi-night-sleet" style="font-size: 40px"></i>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
 <div #map id="map"></div>
 </ion-content>

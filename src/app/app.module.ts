@@ -25,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DbProvider } from '../providers/db/db';
 import { CollaborateurService } from './collaborateur.service';
 import { RemoteCollaborateurService } from './remoteCollaborateur.service';
+import { MapService } from './map.service';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
@@ -67,6 +68,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SQLite,
     CollaborateurService,
     RemoteCollaborateurService,
+    MapService,
     FingerprintAIO,
     Contacts,
     CallNumber,

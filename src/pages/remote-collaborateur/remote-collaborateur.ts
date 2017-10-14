@@ -5,6 +5,8 @@ import { RemoteCollaborateurService } from '../../app/remoteCollaborateur.servic
 import { ItemDetailsPage } from '../item-details/item-details';
 import { Collaborateur } from '../../model/Collaborateur';
 
+import * as _ from 'underscore';
+
 
 @IonicPage()
 @Component({
@@ -13,7 +15,7 @@ import { Collaborateur } from '../../model/Collaborateur';
 })
 export class RemoteCollaborateurPage {
   collaborateurs: any[];
-
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams, private remoteCol : RemoteCollaborateurService) {
   }
 

@@ -10,6 +10,7 @@ import {
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Collaborateur } from '../../model/Collaborateur';
+import * as _ from 'underscore';
 
 declare var google;
 
@@ -36,6 +37,7 @@ export class AddressInfoPage {
 
   ionViewDidLoad() {
     this.loadMap();
+    console.log(_);
   }
 
   loadMap() {
