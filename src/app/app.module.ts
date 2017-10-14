@@ -26,6 +26,7 @@ import { DbProvider } from '../providers/db/db';
 import { CollaborateurService } from './collaborateur.service';
 import { RemoteCollaborateurService } from './remoteCollaborateur.service';
 import { MapService } from './map.service';
+import { WeatherProvider } from '../providers/weather/weather';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
@@ -75,7 +76,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SMS,
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DbProvider
+    DbProvider,
+    WeatherProvider
   ]
 })
 export class AppModule {}

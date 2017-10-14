@@ -14,8 +14,8 @@
           <ion-col col-8>
               Adresse : {{ collaborateur?.Address }} <br>
               {{ collaborateur?.ZipCode }} {{ collaborateur?.Town}}<br>
-              {{ weather?.summary }} <br>
-              <i class="wi wi-thermometer"></i> : {{ weather?.temperature }}<i class="wi wi-celsius"></i><br>
+              {{ weather?.currently.summary }} <br>
+              <i class="wi wi-thermometer"></i> : {{ weather?.currently.temperature }}<i class="wi wi-celsius"></i><br>
           </ion-col>
           <ion-col>
               <i class="wi wi-night-sleet" style="font-size: 40px"></i>

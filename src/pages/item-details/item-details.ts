@@ -9,13 +9,13 @@ import { Collaborateur } from '../../model/Collaborateur';
 import { EditCollaborateurPage } from '../edit-collaborateur/edit-collaborateur';
 import { AddressInfoPage } from '../address-info/address-info';
 import { CollaborateurService } from '../../app/collaborateur.service';
+import { WeatherProvider } from '../../providers/weather/weather';
 import { MapService } from '../../app/map.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { mapApiKey, weatherApiKey } from '../../app/apiKey';
 
 
 @Component({
@@ -32,9 +32,9 @@ export class ItemDetailsPage {
               private colService: CollaborateurService,
               private mapService: MapService,
               private callNumber: CallNumber,
+              private weatherProvider: WeatherProvider,
               private sms: SMS,
-              public alertCtrl: AlertController,
-              private http: HttpClient) {
+              public alertCtrl: AlertController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.collaborateur = navParams.get('collaborateur');
 
@@ -104,11 +104,12 @@ export class ItemDetailsPage {
     this.mapService.getMap(address).subscribe( data => {
       let latitude = data[0].geometry.location.lat;
       let longitude = data[0].geometry.location.lng
-      this.getWeather(latitude, longitude).subscribe(data => {
-        console.log(data);
+      this.weatherProvider.getWeather(latitude, longitude).subscribe(data => {
+        console.log(data.currently);
         this.navCtrl.push(AddressInfoPage, {weather: data, collaborateur: collaborateur, latitude: latitude, longitude: longitude});
       })
-    }, (error: HttpErrorResponse) => {
+    }, (error) => {
+      this.displayError(error);
     })
 
   }
@@ -154,16 +155,7 @@ export class ItemDetailsPage {
     alert.present();
   }
 
-  getWeather(latitude: string, longitude: string){
-    const h = new HttpHeaders().set('Access-Control-Allow-Origin', "*");
-    return this.http.get(`/weather/${weatherApiKey}/${latitude},${longitude}?units=auto&lang=fr`, {headers: h})
-     .map(data => {
-       return data['currently'];
-     })
-     .catch((err) => {
-        return Observable.throw(err);
-     });
-  }
+ 
 
 
 
