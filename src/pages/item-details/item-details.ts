@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
-import { Contacts, Contact, ContactField, ContactFieldType, ContactName, ContactFindOptions } from '@ionic-native/contacts';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
 import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
 
@@ -11,11 +11,6 @@ import { AddressInfoPage } from '../address-info/address-info';
 import { CollaborateurService } from '../../app/collaborateur.service';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { MapService } from '../../app/map.service';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
-import { HttpErrorResponse } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({

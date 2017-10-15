@@ -1,9 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Collaborateur } from '../model/Collaborateur';
-import { HttpClient } from '@angular/common/http';
-import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
@@ -14,7 +11,7 @@ export class CollaborateurService {
   collaborateurUpdated = new EventEmitter<Collaborateur>();
   collaborateurAdded = new EventEmitter<string>();
 
-  constructor(private http: HttpClient, private http_: Http, private storage: Storage){
+  constructor(private storage: Storage){
     // this.getMyWebCollabo().subscribe(collaborateurs => {
     //   this.collaborateurs = collaborateurs;
     // });

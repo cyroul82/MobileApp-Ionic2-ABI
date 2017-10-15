@@ -8,11 +8,9 @@ import { mapApiKey } from './apiKey';
 export class MapService {
 
     constructor(private http: Http) {
-
     }
 
     getMap(address: string){
-      console.log(address);
       return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${mapApiKey}&address=${address}`)
       .map((response) => {
         var t = response.json();

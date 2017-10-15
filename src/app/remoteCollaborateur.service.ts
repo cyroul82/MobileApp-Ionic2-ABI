@@ -1,7 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Collaborateur } from '../model/Collaborateur';
-import { HttpClient } from '@angular/common/http';
-import { Headers, Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,7 +8,7 @@ export class RemoteCollaborateurService {
 
   private collaborateurs: any[];
 
-  constructor(private http: HttpClient, private http_: Http){
+  constructor(private http_: Http){
 
   }
 

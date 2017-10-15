@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 
@@ -27,8 +26,7 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
-    private sqlite: SQLite
+    public splashScreen: SplashScreen
   ) {
     this.initializeApp();
 

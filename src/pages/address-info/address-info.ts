@@ -1,16 +1,6 @@
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
- } from '@ionic-native/google-maps';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Collaborateur } from '../../model/Collaborateur';
-import * as _ from 'underscore';
 
 declare var google;
 
@@ -30,7 +20,7 @@ export class AddressInfoPage {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps : GoogleMaps) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.weather = navParams.get('weather');
     let d = new Date(this.weather.currently.time * 1000);
     this.date = d.toLocaleString();

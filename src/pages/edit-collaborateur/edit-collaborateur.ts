@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
-import { CollaborateurService } from '../../app/collaborateur.service';
 /**
  * Generated class for the EditCollaborateurPage page.
  *
@@ -16,7 +15,7 @@ import { CollaborateurService } from '../../app/collaborateur.service';
 })
 export class EditCollaborateurPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private collaborateurService: CollaborateurService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
