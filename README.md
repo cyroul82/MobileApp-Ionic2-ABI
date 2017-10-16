@@ -25,7 +25,41 @@ The detail page of a collaborateur allows us to find out the location (using goo
 ## Components and Plugins used throughout this project
 
 
-![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/accueil.PNG?raw=true)
+<h3>Screenshots</h3>
+<table>
+  <tr>
+    <td>
+      ![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/accueil.PNG?raw=true)
+    </td>
+    <td>
+      ![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/menu.PNG?raw=true)
+    </td>
+  </tr>
+    <tr>
+    <td>
+      <img src="/Screenshots/sc2.png" width="400"/>
+    </td>
+    <td>
+      <img src="/Screenshots/sc3.png" width="400"/>
+    </td>
+  </tr>
+        <tr>
+    <td>
+      <img src="/Screenshots/sc4.png" width="400"/>
+    </td>
+    <td>
+      <img src="/Screenshots/sc5.png" width="400"/>
+    </td>
+  </tr>
+        <tr>
+    <td>
+      <img src="/Screenshots/sc6.png" width="400"/>
+    </td>
+    <td>
+      <img src="/Screenshots/sc7.png" width="400"/>
+    </td>
+  </tr>
+  </table>
 
 
 
