@@ -10,7 +10,7 @@ This is an application using Ionic Framework v3.13.0.
 </ul>
 
 The app is fetching a list of "contacts (Collaborateurs)" from a RestFul WebService and displays them in a page "Remote Collaborateurs".<br>
-From this list we can import the collaborateur into the app collaborateur list (using the storage plugin to save them) or into the contact phone.
+From this list we can import the collaborateur into the app collaborateur list (using the storage plugin to save them) or into the contact phone.<br>
 The detail page of a collaborateur allows us to find out the location (using google maps) as well as the weather (using the API [Darksky.net](https://darksky.net/) for this collaborateur's address.
 
 
