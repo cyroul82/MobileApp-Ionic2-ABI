@@ -1,6 +1,6 @@
 This is an application using Ionic Framework v3.13.0.
 
-*Useless application but helpful to understand Cordova, its plugins and the framework Ionic.*<br>
+*Useless application but helpful to understand Cordova, its plugins and the Ionic Framework .*<br>
 *This project aims to learn how to use cordova plugins and to discover Ionic Framework, the errors are not handled.*<br>
 *In order to use the app, make sure to create a file : apiKey.ts in src/app and export the google maps API key as well ass the darksky.net API Key : see the example below*<br>
 
@@ -37,28 +37,20 @@ The detail page of a collaborateur allows us to find out the location (using goo
   </tr>
     <tr>
     <td>
-      <img src="/Screenshots/sc2.png" width="400"/>
+      <img src="/screenshot/collaboList.PNG" width="400">
     </td>
     <td>
-      <img src="/Screenshots/sc3.png" width="400"/>
+      <img src="/screenshot/detail.PNG" width="400">
     </td>
   </tr>
         <tr>
     <td>
-      <img src="/Screenshots/sc4.png" width="400"/>
+      <img src="/screenshot/newCollabo.PNG" width="400">
     </td>
     <td>
-      <img src="/Screenshots/sc5.png" width="400"/>
     </td>
   </tr>
-        <tr>
-    <td>
-      <img src="/Screenshots/sc6.png" width="400"/>
-    </td>
-    <td>
-      <img src="/Screenshots/sc7.png" width="400"/>
-    </td>
-  </tr>
+
   </table>
 
 
