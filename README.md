@@ -29,10 +29,10 @@ The detail page of a collaborateur allows us to find out the location (using goo
 <table>
   <tr>
     <td>
-      ![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/accueil.PNG?raw=true)
+      <img src="/screenshot/accueil.PNG" width="400">
     </td>
     <td>
-      ![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/menu.PNG?raw=true)
+      <img src="/screenshot/menu.PNG" width="400">
     </td>
   </tr>
     <tr>
