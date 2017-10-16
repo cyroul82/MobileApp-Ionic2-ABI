@@ -1,7 +1,7 @@
 This is an application using Ionic Framework v3.13.0.
 
 *Useless application but helpful to understand Cordova, its plugins and the Ionic Framework .*<br>
-*This project aims to learn how to use cordova plugins and to discover Ionic Framework, the errors are not handled.*<br>
+*This project aims to learn how to use cordova plugins and to discover Ionic Framework thus the errors are not handled.!!!;)*<br>
 *In order to use the app, make sure to create a file : apiKey.ts in src/app and export the google maps API key as well as the darksky.net API Key : see the example below*<br>
 
  *export var mapApiKey = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';<br>
