@@ -48,7 +48,8 @@ The detail page of a collaborateur allows us to find out the location (using goo
       <img src="/screenshot/newCollabo.PNG" width="400">
     </td>
     <td>
-    </td>
+      <img src="/screenshot/collabo.PNG" width="400">
+    </td>
   </tr>
 
   </table>
