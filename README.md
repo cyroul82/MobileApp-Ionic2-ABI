@@ -24,6 +24,24 @@ The detail page of a collaborateur allows us to find out the location (using goo
 
 ## Components and Plugins used throughout this project
 
+Plugins used for this app : <br>
+<ul>
+  <li>Contact</li>
+  <li>Sms</li>
+  <li>Sqlite Storage</li>
+  <li>Geolocation</li>
+  <li>Google Maps</li>
+</ul>
+
+I created 4 differents services : (not really well organized but it does the job !)
+<ul>
+  <li>collaborateur.service.ts (src/app) => get the list, add and update a collaborateur</li>
+  <li>remoteCollaborateur.service.ts (src/app) => fetch the collabroteurs list from a WebService</li>
+  <li>map.service.ts (src/app) => fetch the coordonates(latitude and longitude) from a given address</li>
+  <li>weather.ts (src/providers/weather/weather.ts) => fetch the weather for a given address</li>
+<ul>
+  
+
 
 <h3>Screenshots</h3>
 <table>
