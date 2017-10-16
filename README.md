@@ -4,8 +4,8 @@ This is an application using Ionic Framework v3.13.0.
 *This project aims to learn how to use cordova plugins and to discover Ionic Framework, the errors are not handled.*<br>
 *In order to use the app, make sure to create a file : apiKey.ts in src/app and export the google maps API key as well ass the darksky.net API Key : see the example below*<br>
 
- *export var mapApiKey = 'AIzaSyCdpwtAlWXIFZ3EBZr5razbVU2z8loW0bU';<br>
-export var weatherApiKey = '85c4c283eaeb586607091e57f0b1c1d6';*
+ *export var mapApiKey = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';<br>
+export var weatherApiKey = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';*
 
 ## App Description
 
