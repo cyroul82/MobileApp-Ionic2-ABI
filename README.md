@@ -22,11 +22,10 @@ From this list we can import the collaborateur into the app collaborateur list (
 The detail page of a collaborateur allows us to find out the location (using google maps) as well as the weather (using the API [Darksky.net](https://darksky.net/) for this collaborateur's address.
 
 
-
 ## Components and Plugins used throughout this project
 
 
-
+![alt text](https://github.com/cyroul82/MobileApp-Ionic2-ABI/blob/master/screenshot/accueil.PNG?raw=true)
 
 
 
